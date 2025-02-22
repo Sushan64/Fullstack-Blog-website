@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+{{ post.title }}
+{% endblock %}
+
+{% block contains %}
+<h1 class="fw-bold">{{ post.title }}</h1>
+<p class="text-secondary fst-italic">{{ post.meta_description }}</p>
+<p>Author: {{ post.author }} | Published: {{ post.published_date }}</p>
+    <img class="img-fluid" src="{{ post.image.url }}" alt="{{ post.alt }}"/>
+    <article class="my-3">
+      <p>{{ post.text|linebreaksbr }}</p>
+</article>
+{% endblock %}
