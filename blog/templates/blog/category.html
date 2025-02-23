@@ -1,14 +1,18 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
+
+{% block title %}
+{{ category_value }}
+{% endblock %}
 
 {% block contains %}
- <div class="d-flex justify-content-center flex-wrap gap-2">
+<div class="d-flex justify-content-center flex-wrap gap-2">
 {% for post in page_obj %}
 <div class="card " style="width: 21rem;">
   <a href="{% url 'post' pk=post.pk %}">
-  <div style="height: 160px; width: 100%; background-image: url('{{ post.image.url }}'); background-size: cover; background-position: center;" >
+  <div style="height: 160px; width:100%; background-image: url('{{ post.image.url }}'); background-size: cover; background-position: center;" >
   </div>
   </a>
-  
+
   <div class="card-body">
    <a class="text-decoration-none text-white" href="{% url 'post' pk=post.pk %}"><h5 class="card-title">{{ post.title }}</h5></a>
     <p class="card-text text-secondary">{{ post.meta_description }}</p>
@@ -31,7 +35,7 @@
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
-   
+
     {% if page_obj.has_next %}
     <li class="page-item">
 <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
@@ -42,27 +46,4 @@
     </li>
   </ul>
 </nav>
-
-
-<!--[ TECH ]-->
-<h2 class="text-center my-3">Tech</h2>
-<div class="d-flex justify-content-center flex-wrap gap-2">
-  {% for post in tech|slice:'1' %}
-  <div class="card " style="width: 21rem;">
-    
-  <a href="{% url 'post' pk=post.pk %}">
-  <div style="height: 160px; width: 100%; background-image: url('{{ post.image.url }}'); background-size: cover; background-position: center;" >
-  </div>
-  </a>
-    
-  <div class="card-body">
-    <a class="text-decoration-none text-white" href="{% url 'post' pk=post.pk %}"><h5 class="card-title">{{ post.title }}</h5></a>
-    <p class="card-text text-secondary">{{ post.meta_description }}</p>
-  </div>
-  </div>
-  {% endfor %}
-  <a href="{% url 'category' category_value='Tech' %}?page=2">
-  <button class="btn btn-primary" type="submit">More</button></a>
-</div>
-
 {% endblock %}
