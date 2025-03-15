@@ -13,6 +13,7 @@ def index(request):
 
   #Tech
   tech = Post.objects.filter(category='Tech').order_by('-published_date')
+  
   context={
     "posts": posts,
     "page_obj": page_obj,
@@ -21,9 +22,15 @@ def index(request):
   
   return render(request, "blog/index.html", context)
 
+
+
 def post(request, pk):
   post = get_object_or_404(Post, pk=pk)
-  return render(request, "blog/post.html", {"post": post})
+  relateds = Post.objects.filter(category=post.category).exclude(pk=post.pk).order_by('-published_date')[:5]
+  
+  return render(request, "blog/post.html", {"post": post, "relateds": relateds})
+
+
 
 def category(request, category_value):
   category_post = Post.objects.filter(category=category_value).order_by('-published_date')
