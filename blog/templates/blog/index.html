@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block contains %}
+<div class="container mx-auto px-4 py-8">
+  <div class="flex flex-wrap justify-center gap-6 -mx-4">
+{% for post in page_obj %}
+{% include 'blog/card.html' %}
+{% endfor %}
+  </div>
+</div>
+
+<!-- Pagination Component -->
+<div class="flex justify-center space-x-1 py-4">
+  {% include 'blog/pagination.html' %}
+</div>
+
+
+<!--[ TECH ]-->
+<h2 class="text-center text-3xl font-bold mb-3">Tech</h2>
+<div class="container mx-auto px-4 py-8">
+  <div class="flex flex-wrap justify-center gap-3 -mx-4">
+  {% for post in tech|slice:'1' %}
+  {% include 'blog/card.html' %}
+  {% endfor %}
+</div>
+</div>
+<!-- Load More -->
+<div class="flex justify-center py-6">
+<a id="loadMoreLink" href="{% url 'category' category_value='Tech' %}?page=2" class="inline-flex items-center px-6 py-2 bg-blue-600 text-white rounded-lg gap-2 hover:bg-blue-700 transition">
+    <span>Load More</span>
+    <svg id="spinner" class="hidden w-5 h-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+    </svg>
+</a>
+{% endblock %}

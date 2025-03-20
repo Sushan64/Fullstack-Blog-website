@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+{{ category_value }}
+{% endblock %}
+
+{% block contains %}
+<h2 class="text-center font-bold text-3xl">{{ category_value }}</h2>
+<div class="container mx-auto px-4 py-8">
+  <div class="flex flex-wrap -mx-4">
+{% for post in page_obj %}
+{% include 'blog/card.html' %}
+{% endfor %}
+  </div>
+</div>
+
+<!--[ Pagination ]-->
+<div class="flex items-center justify-center space-x-1 py-4">
+  {% include 'blog/pagination.html' %}
+</div>
+{% endblock %}
