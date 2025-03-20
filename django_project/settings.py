@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4ju2n@$f9d0c=h)_g0lbb%k9&@rf(xa$d$g$&5ri$uf)*gev^4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".replit.dev", ".replit.app", ".vercel.app", "*.sisko.repl.co"]
+ALLOWED_HOSTS = [".replit.dev", ".replit.app", ".vercel.app", "*.sisko.repl.co", "5538b446-d014-427c-be5e-2fbacbdb7787-00-1krrg3vbyj3dg.sisko.repl.co"]
 CSRF_TRUSTED_ORIGINS = ["https://*.replit.dev", "https://*.replit.app"]
 
 # Application definition
