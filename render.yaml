@@ -10,12 +10,4 @@ services:
     name: mysite
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn django_project.asgi:application -k uvicorn.workers.UvicornWorker"    envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: mysitedb
-          property: connectionString
-      - key: SECRET_KEY
-        generateValue: true
-      - key: WEB_CONCURRENCY
-        value: 4
+    startCommand: "gunicorn django_project.asgi:application -k uvicorn.workers.UvicornWorker" 
