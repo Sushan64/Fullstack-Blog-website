@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-4ju2n@$f9d0c=h)_g0lbb%k9&@rf(xa$d$g$&5ri$uf)*gev^4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".replit.dev", ".replit.app", ".vercel.app", "*.sisko.repl.co", "5538b446-d014-427c-be5e-2fbacbdb7787-00-1krrg3vbyj3dg.sisko.repl.co"]
-CSRF_TRUSTED_ORIGINS = ["https://*.replit.dev", "https://*.replit.app"]
+ALLOWED_HOSTS = [".replit.dev", ".replit.app", ".vercel.app", ".sisko.repl.co"]
+CSRF_TRUSTED_ORIGINS = ["https://*.replit.dev", "https://*.replit.app",              "https://*.sisko.repl.co",]
 
 # Application definition
 
@@ -37,13 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage', #Added Manually
     'django.contrib.staticfiles',
+    'cloudinary', #Added
     'blog',
+    
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # WhiteNoise should be right after SecurityMiddleware
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # WhiteNoise SecurityMiddleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -81,15 +90,15 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-
+'''
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 '''
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -100,7 +109,7 @@ DATABASES = {
         "PORT": "46318",
     }
 }
-'''
+
 
 
 # Password validation
@@ -151,6 +160,7 @@ if not DEBUG:
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
