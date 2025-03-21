@@ -6,7 +6,9 @@ click==8.1.8
 cloudinary==1.43.0
 dj-database-url==2.3.0
 Django==5.0.2
+django-ckeditor==6.7.2
 django-cloudinary-storage==0.3.0
+django-js-asset==3.1.2
 gunicorn==23.0.0
 h11==0.14.0
 idna==3.10
@@ -15,6 +17,7 @@ pillow==11.1.0
 psycopg==3.2.6
 psycopg2-binary==2.9.10
 python-decouple==3.8
+python-dotenv==1.0.1
 requests==2.32.3
 six==1.17.0
 sqlparse==0.4.4

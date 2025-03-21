@@ -7,7 +7,7 @@ from .models import Post
 def index(request):
   #All Post
   posts = Post.objects.all().order_by('-published_date')
-  p = Paginator(posts, 1)
+  p = Paginator(posts, 2)
   page_number = request.GET.get('page')
   page_obj = p.get_page(page_number)
 
@@ -35,7 +35,7 @@ def post(request, pk):
 def category(request, category_value):
   category_post = Post.objects.filter(category=category_value).order_by('-published_date')
 
-  p = Paginator(category_post, 1)
+  p = Paginator(category_post, 5)
   page_number = request.GET.get('page')
   page_obj = p.get_page(page_number)
   
