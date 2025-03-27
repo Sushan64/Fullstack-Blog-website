@@ -25,7 +25,7 @@ load_dotenv()
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [".replit.dev", ".replit.app", ".sisko.repl.co", ".onrender.com", ".koyeb.app"]
 CSRF_TRUSTED_ORIGINS = ["https://*.replit.dev", "https://*.replit.app",              "https://*.sisko.repl.co",]
